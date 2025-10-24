@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MC MENSAJERIA CONFIDENCIAL</title>
+
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --card: #ffffff;
+      --accent: #2563eb;
+      --danger: #ef4444;
+      --muted: #6b7280;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #000000;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    header {
+      background-color: #e5ff00;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 20px;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin: 0;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+    }
+
+    form {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: 1fr 1fr 1fr auto;
+    }
+
+    label {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #e6e9ee;
+      border-radius: 8px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      align-items: end;
+    }
+
+    button {
+      cursor: pointer;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 0;
+      background: var(--accent);
+      color: #fff;
+    }
+
+    button.secondary {
+      background: #eef2ff;
+      color: var(--accent);
+      border: 1px solid rgba(37, 99, 235, 0.12);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+    }
+
+    th, td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid #eef2f6;
+    }
+
+    th {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    td small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .row-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .btn-edit {
+      background: #f97316;
+      color: #fff;
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 0;
+    }
+
+    .btn-delete {
+      background: var(--danger);
+      color: #fff;
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 0;
+    }
+
+    .btn-save {
+      background: #d9e714;
+      color: #fff;
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 0;
+    }
+
+    .btn-cancel {
+      background: #000000;
+      color: #fff;
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 0;
+    }
+
+    .empty {
+      padding: 20px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    @media (max-width: 720px) {
+      form {
+        grid-template-columns: 1fr;
+      }
+      .actions {
+        justify-content: flex-end;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>MC MENSAJERIA CONFIDENCIAL</h1>
+      <div style="color: var(--muted); font-size: 13px;">
+        Transporte, logística, cadena de suministro y almacenamiento
+      </div>
+    </header>
+
+    <!-- Formulario de nuevo envío -->
+    <section class="card" aria-labelledby="formTitle">
+      <h2 id="formTitle" style="font-size: 14px; margin: 0 0 8px 0;">Programa tu envío</h2>
+
+      <form id="form">
+        <div>
+          <label for="destinatario">Destinatario</label>
+          <input id="destinatario" name="destinatario" type="text" placeholder="Nombre del destinatario" required />
+        </div>
+
+        <div>
+          <label for="departamento">Departamento</label>
+          <select id="departamento" name="departamento" required>
+            <option value="">Seleccione un departamento</option>
+            <option>Amazonas</option><option>Antioquia</option><option>Arauca</option>
+            <option>Atlántico</option><option>Bolívar</option><option>Boyacá</option>
+            <option>Caldas</option><option>Caquetá</option><option>Casanare</option>
+            <option>Cauca</option><option>Cesar</option><option>Chocó</option>
+            <option>Córdoba</option><option>Cundinamarca</option><option>Guainía</option>
+            <option>Guaviare</option><option>Huila</option><option>La Guajira</option>
+            <option>Magdalena</option><option>Meta</option><option>Nariño</option>
+            <option>Norte de Santander</option><option>Putumayo</option><option>Quindío</option>
+            <option>Risaralda</option><option>San Andrés y Providencia</option><option>Santander</option>
+            <option>Sucre</option><option>Tolima</option><option>Valle del Cauca</option>
+            <option>Vaupés</option><option>Vichada</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="ciudad">Ciudad o municipio</label>
+          <input id="ciudad" name="ciudad" type="text" placeholder="Ingresa Ciudad o municipio" required />
+        </div>
+
+        <div>
+          <label for="direccion">Dirección de envío</label>
+          <input id="direccion" name="direccion" type="text" placeholder="Ingresa Dirección de envío" required />
+        </div>
+
+        <div>
+          <label for="descripcion">Descripción</label>
+          <input id="descripcion" name="descripcion" type="text" placeholder="Contenido / observaciones" required />
+        </div>
+
+        <div class="actions">
+          <button id="btnAdd" type="submit">Agregar envío</button>
+          <button id="btnClear" type="button" class="secondary">Limpiar</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Tabla de envíos -->
+    <section class="card" style="margin-top: 14px;">
+      <h2 style="font-size: 14px; margin: 0 0 8px 0;">Lista de envíos</h2>
+
+      <div id="tableWrap">
+        <table id="enviosTable" aria-live="polite">
+          <thead>
+            <tr>
+              <th>Destinatario</th>
+              <th>Departamento</th>
+              <th>Ciudad</th>
+              <th>Dirección</th>
+              <th>Descripción</th>
+              <th style="width: 180px;">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="enviosBody"></tbody>
+        </table>
+
+        <div id="emptyState" class="empty">
+          No hay envíos. Crea uno usando el formulario.
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // --- Variables ---
+    const form = document.getElementById('form');
+    const destinatario = document.getElementById('destinatario');
+    const departamento = document.getElementById('departamento');
+    const ciudad = document.getElementById('ciudad');
+    const direccion = document.getElementById('direccion');
+    const descripcion = document.getElementById('descripcion');
+    const enviosBody = document.getElementById('enviosBody');
+    const emptyState = document.getElementById('emptyState');
+
+    const STORAGE_KEY = 'gestor_envios_v2';
+    let envios = loadEnvios();
+
+    // --- Almacenamiento ---
+    function saveEnvios() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(envios));
+    }
+
+    function loadEnvios() {
+      try {
+        const data = localStorage.getItem(STORAGE_KEY);
+        return data ? JSON.parse(data) : [];
+      } catch (e) {
+        console.error('Error cargando envíos:', e);
+        return [];
+      }
+    }
+
+    // --- Renderizado de tabla ---
+    function render() {
+      enviosBody.innerHTML = '';
+      if (envios.length === 0) {
+        emptyState.style.display = 'block';
+        return;
+      }
+      emptyState.style.display = 'none';
+
+      envios.forEach((env, i) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${env.destinatario}</td>
+          <td>${env.departamento}</td>
+          <td>${env.ciudad}</td>
+          <td>${env.direccion}</td>
+          <td>${env.descripcion}</td>
+          <td>
+            <button class="btn-edit" type="button">Editar</button>
+            <button class="btn-delete" type="button">Eliminar</button>
+          </td>
+        `;
+
+        tr.querySelector('.btn-delete').addEventListener('click', () => deleteEnvio(i));
+        tr.querySelector('.btn-edit').addEventListener('click', () => startEditRow(tr, env, i));
+        enviosBody.appendChild(tr);
+      });
+    }
+
+    // --- Agregar envío ---
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const nuevo = {
+        destinatario: destinatario.value.trim(),
+        departamento: departamento.value,
+        ciudad: ciudad.value.trim(),
+        direccion: direccion.value.trim(),
+        descripcion: descripcion.value.trim()
+      };
+
+      if (Object.values(nuevo).some(v => !v)) {
+        alert('Todos los campos son obligatorios.');
+        return;
+      }
+
+      envios.push(nuevo);
+      saveEnvios();
+      render();
+      form.reset();
+      destinatario.focus();
+    });
+
+    // --- Eliminar envío ---
+    function deleteEnvio(i) {
+      if (!confirm('¿Deseas eliminar este envío?')) return;
+      envios.splice(i, 1);
+      saveEnvios();
+      render();
+    }
+
+    // --- Editar envío ---
+    function startEditRow(tr, env, i) {
+      tr.innerHTML = `
+        <td><input type="text" value="${env.destinatario}" style="width:100%"></td>
+        <td><input type="text" value="${env.departamento}" style="width:100%"></td>
+        <td><input type="text" value="${env.ciudad}" style="width:100%"></td>
+        <td><input type="text" value="${env.direccion}" style="width:100%"></td>
+        <td><input type="text" value="${env.descripcion}" style="width:100%"></td>
+        <td>
+          <button class="btn-save" type="button">Guardar</button>
+          <button class="btn-cancel" type="button">Cancelar</button>
+          <button class="btn-delete" type="button">Eliminar</button>
+        </td>
+      `;
+
+      const [inDest, inDep, inCiu, inDir, inDesc] = tr.querySelectorAll('input');
+
+      tr.querySelector('.btn-save').addEventListener('click', () => {
+        const actualizado = {
+          destinatario: inDest.value.trim(),
+          departamento: inDep.value.trim(),
+          ciudad: inCiu.value.trim(),
+          direccion: inDir.value.trim(),
+          descripcion: inDesc.value.trim()
+        };
+        if (Object.values(actualizado).some(v => !v)) {
+          alert('Todos los campos son obligatorios.');
+          return;
+        }
+        envios[i] = actualizado;
+        saveEnvios();
+        render();
+      });
+
+      tr.querySelector('.btn-cancel').addEventListener('click', render);
+      tr.querySelector('.btn-delete').addEventListener('click', () => deleteEnvio(i));
+    }
+
+    // --- Botón limpiar ---
+    document.getElementById('btnClear').addEventListener('click', () => form.reset());
+
+    // --- Inicialización ---
+    render();
+  </script>
+</body>
+</html>
